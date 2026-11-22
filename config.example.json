@@ -1,0 +1,14 @@
+{
+  "mic_device": "",
+  "model_dir": "models/sense-voice",
+  "language": "zh",
+  "use_itn": true,
+  "num_threads": 4,
+  "max_seconds": 120,
+  "min_seconds": 0.4,
+  "paste": true,
+  "paste_mode": "auto",
+  "fix_terms": true,
+  "cleanup": "safe",
+  "window_topmost": true
+}

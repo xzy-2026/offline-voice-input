@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.py[cod]
+models/
+config.json
+领域词.txt
+运行日志.txt*
+临时录音.raw
+*.wav
+*.mp3
+*.mp4
+*.part*
