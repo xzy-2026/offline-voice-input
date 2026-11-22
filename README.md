@@ -24,8 +24,25 @@
    .\.venv\Scripts\python.exe -m pip install -r requirements.txt
    ```
 
-3. 从 [sherpa-onnx 官方模型说明](https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/sense-voice/pretrained.rst) 下载 `sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2`，解压后把其中的 `model.int8.onnx` 和 `tokens.txt` 放入本项目的 `models\sense-voice\` 文件夹。模型约 228 MiB。
-4. 双击项目文件夹中的 `启动.bat`，等待模型加载。将光标放进输入框，按 `Ctrl + Alt + 空格` 开始说话，再按一次结束。
+3. 双击项目文件夹中的 `启动.bat`。首次启动时，如果没有模型，程序会询问是否从官方 GitHub 下载；选择“是”后等待下载和加载。下载需要联网，模型文件约 228 MiB；若选择“否”，程序退出，下次启动可重新选择。
+4. 将光标放进输入框，按 `Ctrl + Alt + 空格` 开始说话，再按一次结束。
+
+也可手动从 [sherpa-onnx 官方模型说明](https://github.com/k2-fsa/sherpa/blob/master/docs/source/onnx/sense-voice/pretrained.rst) 下载 `sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2`，解压后将 `model.int8.onnx` 和 `tokens.txt` 放入 `models\sense-voice\`。
+
+### 请 AI 助手安装
+
+可以把本项目地址发给具备 Windows 文件操作和网络权限的 AI 助手，并让它按本节执行：
+
+1. 在项目目录用 `py -3.14 -m venv .venv` 创建虚拟环境，用 `.\.venv\Scripts\python.exe -m pip install -r requirements.txt` 安装依赖。
+2. 询问用户是否允许下载模型；获准后可运行以下命令下载本项目支持的固定模型（约 228 MiB）：
+
+   ```powershell
+   .\.venv\Scripts\python.exe -c "import model_setup; model_setup.install('models/sense-voice')"
+   ```
+
+3. 检查 `models\sense-voice\model.int8.onnx` 和 `tokens.txt` 均存在；启动 `启动.bat`，再请用户实际试录。不要上传用户的 `config.json`、`领域词.txt`、`运行日志.txt` 或录音文件。
+
+本程序目前支持上述 SenseVoice 模型；不能直接把其他模型文件放进来当作兼容模型使用。
 
 如果启动后看不到窗口，可查看项目文件夹里的 `运行日志.txt`。也可以在 PowerShell 运行 `.\.venv\Scripts\python.exe voice_input.py` 查看错误。
 

@@ -736,6 +736,13 @@ def main():
         print(eng.transcribe(samples))
         return 0
 
+    from model_setup import ensure_model
+    model_dir = cfg["model_dir"]
+    if not os.path.isabs(model_dir):
+        model_dir = os.path.join(ROOT, model_dir)
+    if not ensure_model(model_dir):
+        return 1
+
     import win32event
     import win32api
     mutex = win32event.CreateMutex(None, True, "Global\\xiaoshuo_voice_input_v2")
